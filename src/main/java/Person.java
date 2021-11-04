@@ -2,17 +2,26 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class Person {
-    int id;
-    String name;
-    LocalDate birth_date;
-    String sex;
-    int pasNum;
-    int pasSeries;
-    int age;
+    private int id;
+    private String name;
+    private LocalDate birth_date;
+    private String sex;
+    private int pasNum;
+    private int pasSeries;
+    private int age;
     Person() {
         id = pasNum = pasSeries = age = 0;
         name = sex = null;
-        birth_date = LocalDate.of(2001,8,24);
+        birth_date = LocalDate.now();
+        findAge();
+    }
+    Person(int id, String name, LocalDate birth_date, String sex, int pasNum, int pasSeries, int age) {
+        this.id = id;
+        this.name = name;
+        this.birth_date = birth_date;
+        this.sex = sex;
+        this.pasNum = pasNum;
+        this.pasSeries = pasSeries;
         findAge();
     }
     public void findAge() {
