@@ -1,10 +1,14 @@
+import java.time.LocalDate;
+
 public class Contract {
-    public long id;
-    public String startDate;
-    public String endDate;
-    public long number;
+    long id;
+    LocalDate startDate;
+    LocalDate endDate;
+    long number;
+    Object owner;
     Contract() {
         id = number = -1;
         startDate = endDate = null;
+        owner = null;
     }
 }
