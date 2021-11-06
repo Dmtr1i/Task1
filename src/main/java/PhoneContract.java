@@ -2,22 +2,25 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class PhoneContract extends Contract{
-    private int minutes, messages, internet;
+    private static int minutes, messages, internet;
     PhoneContract() {
         minutes = messages = internet = -1;
     }
-    PhoneContract(long id, LocalDate start, LocalDate end, long num, Object owner) {
+    PhoneContract(long id, LocalDate start, LocalDate end, long num, Object owner, int minutes, int messages, int internet) {
         this.id = id;
         this.startDate = start;
         this.endDate = end;
         this.number = num;
         this.owner = owner;
-        System.out.print("Введите количество минут: ");
-        Scanner in = new Scanner(System.in);
-        minutes = in.nextInt();
-        System.out.print("Введите количество сообщений: ");
-        messages = in.nextInt();
-        System.out.print("Введите оставшееся количество интернет трафика: ");
-        internet = in.nextInt();
+        this.minutes = minutes;
+        this.messages = messages;
+        this.internet = internet;
+    }
+
+
+
+    public static void result() {
+        System.out.println("id = " + id + "\nStart = " + startDate + "\nend = " + endDate + "\nnumber = " +
+                number + "\nowner = " + owner + "\nmin = " + minutes + "\nmes = " + messages + "\nint = " + internet);
     }
 }
