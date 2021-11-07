@@ -1,10 +1,19 @@
 public class Repository {
+    /*
+    Private fields for storage data
+     */
     private Contract[] contracts;
     private int size;
+    /*
+    Constructor
+     */
     Repository(){
         size = 0;
         contracts = (Contract[]) new Contract[10];
     }
+    /*
+    this method adds new contract to repository
+     */
     public void add(Contract contract){
         if (isEmpty()) contracts[0] = contract;
         else {
@@ -18,9 +27,21 @@ public class Repository {
         }
         size += 1;
     }
+    /*
+    This method returns true if method if repository is empty and false if repository is not empty
+    */
     public boolean isEmpty(){return size==0;}
+    /*
+    this pethod prints all contracts of the repository
+     */
     public void print(){ for(int i = 0; i < size; i++) System.out.println(contracts[i]); }
+    /*
+    this method returns size of the repository
+     */
     public int getSize(){ return size; }
+    /*
+    this method returns contract by the ID
+     */
     public Contract get(int id) {
         int index = -1;
         for (int i = 0; i < size; i++) {
@@ -32,10 +53,16 @@ public class Repository {
         if (index == -1) return null;
         else return contracts[index];
     }
+    /*
+    this method clear repository
+     */
     public void clear(){
         contracts = (Contract[]) new Contract[10];
         size = 0;
     }
+    /*
+    this method delete contract by the ID
+     */
     public boolean remove(int id) {
         int index = -1;
         for (int i = 0; i < size; i++) {

@@ -6,6 +6,10 @@ import static org.junit.Assert.*;
 
 public class MobileContractTest {
 
+    /*
+    Test all methods of the class MobileContract
+     */
+
     @Test
     public void getMinutes() {
         Person person = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);

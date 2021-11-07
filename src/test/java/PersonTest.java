@@ -6,6 +6,9 @@ import static org.junit.Assert.*;
 
 public class PersonTest {
 
+    /*
+    Test all methods of the class Person
+     */
     @Test
     public void getId() {
         Person boi = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);
@@ -39,17 +42,17 @@ public class PersonTest {
     }
 
     @Test
-    public void getPasportSeries() {
+    public void getPassportSeries() {
         Person boi = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);
-        int actual = boi.getPasportSeries();
+        int actual = boi.getPassportSeries();
         int expected = 1618;
         assertEquals(expected, actual);
     }
 
     @Test
-    public void getPasportNumber() {
+    public void getPassportNumber() {
         Person boi = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);
-        int actual = boi.getPasportNumber();
+        int actual = boi.getPassportNumber();
         int expected = 152634;
         assertEquals(expected, actual);
     }
@@ -99,19 +102,19 @@ public class PersonTest {
     }
 
     @Test
-    public void setPasportNumber() {
+    public void setPassportNumber() {
         Person boi = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);
-        boi.setPasportNumber(205613);
-        int actual = boi.getPasportNumber();
+        boi.setPassportNumber(205613);
+        int actual = boi.getPassportNumber();
         int expected = 205613;
         assertEquals(expected, actual);
     }
 
     @Test
-    public void setPasportSeries() {
+    public void setPassportSeries() {
         Person boi = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);
-        boi.setPasportSeries(1826);
-        long actual = boi.getPasportSeries();
+        boi.setPassportSeries(1826);
+        long actual = boi.getPassportSeries();
         long expected = 1826;
         assertEquals(expected, actual);
     }

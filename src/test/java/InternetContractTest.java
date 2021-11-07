@@ -6,6 +6,10 @@ import static org.junit.Assert.*;
 
 public class InternetContractTest {
 
+    /*
+    Test all methods of the class InternetContract
+     */
+
     @Test
     public void getConnectionSpeed() {
         Person person = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);

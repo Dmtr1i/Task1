@@ -6,6 +6,10 @@ import static org.junit.Assert.*;
 
 public class RepositoryTest {
 
+    /*
+    Test all methods of the class Repository
+     */
+
     @Test
     public void add() {
         Person person = new Person(0, "Klimenko Dmitry Sergeevitch", LocalDate.of(2001, 8, 24), "male", 152634, 1618);
