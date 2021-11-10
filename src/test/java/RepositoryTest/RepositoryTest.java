@@ -1,3 +1,9 @@
+package RepositoryTest;
+
+import Contracts.Contract;
+import Contracts.*;
+import Person.Person;
+import Repository.Repository;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -7,7 +13,7 @@ import static org.junit.Assert.*;
 public class RepositoryTest {
 
     /*
-    Test all methods of the class Repository
+    Test all methods of the class Repository.Repository
      */
 
     @Test

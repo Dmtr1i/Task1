@@ -1,3 +1,7 @@
+package Repository;
+
+import Contracts.Contract;
+
 public class Repository {
     /*
     Private fields for storage data
@@ -7,7 +11,7 @@ public class Repository {
     /*
     Constructor
      */
-    Repository(){
+    public Repository(){
         size = 0;
         contracts = (Contract[]) new Contract[10];
     }
@@ -32,7 +36,7 @@ public class Repository {
     */
     public boolean isEmpty(){return size==0;}
     /*
-    this pethod prints all contracts of the repository
+    this method prints all contracts of the repository
      */
     public void print(){ for(int i = 0; i < size; i++) System.out.println(contracts[i]); }
     /*

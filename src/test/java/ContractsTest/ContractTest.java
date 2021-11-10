@@ -1,3 +1,7 @@
+package ContractsTest;
+
+import Contracts.Contract;
+import Person.Person;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -7,7 +11,7 @@ import static org.junit.Assert.*;
 public class ContractTest {
 
     /*
-    Test all methods of the class Contract
+    Test all methods of the class Contracts.Contract
      */
 
     @Test

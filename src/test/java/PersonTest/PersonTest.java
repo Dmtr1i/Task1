@@ -1,3 +1,6 @@
+package PersonTest;
+
+import Person.Person;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -7,7 +10,7 @@ import static org.junit.Assert.*;
 public class PersonTest {
 
     /*
-    Test all methods of the class Person
+    Test all methods of the class Person.Person
      */
     @Test
     public void getId() {

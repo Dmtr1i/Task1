@@ -1,3 +1,5 @@
+package Person;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -15,7 +17,7 @@ public class Person {
     /*
     Constructor
      */
-    Person(long id, String name, LocalDate birthDate, String gender, int passportNumber, int passportSeries) {
+    public Person(long id, String name, LocalDate birthDate, String gender, int passportNumber, int passportSeries) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;

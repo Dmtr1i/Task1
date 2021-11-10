@@ -1,3 +1,6 @@
+package Contracts;
+import Person.Person;
+
 import java.time.LocalDate;
 
 public class InternetContract extends Contract {
@@ -8,7 +11,7 @@ public class InternetContract extends Contract {
     /*
     Constructor
      */
-    InternetContract(long id, LocalDate start, LocalDate end, long number, Person owner, int speed){
+    public InternetContract(long id, LocalDate start, LocalDate end, long number, Person owner, int speed){
         super(id, start, end, number, owner);
         this.connectionSpeed = speed;
     }

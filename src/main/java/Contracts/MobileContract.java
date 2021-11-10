@@ -1,3 +1,6 @@
+package Contracts;
+import Person.Person;
+
 import java.time.LocalDate;
 
 public class MobileContract extends Contract {
@@ -10,7 +13,7 @@ public class MobileContract extends Contract {
     /*
     Constructor
      */
-    MobileContract(long id, LocalDate start, LocalDate end, long number, Person owner, int minutes, int messages, int internet) {
+    public MobileContract(long id, LocalDate start, LocalDate end, long number, Person owner, int minutes, int messages, int internet) {
         super(id, start, end, number, owner);
         this.minutes = minutes;
         this.messages = messages;

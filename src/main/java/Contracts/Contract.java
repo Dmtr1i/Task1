@@ -1,3 +1,6 @@
+package Contracts;
+import Person.Person;
+
 import java.time.LocalDate;
 
 public class Contract{
@@ -16,7 +19,7 @@ public class Contract{
     Constructor
     */
 
-    Contract(long id, LocalDate start, LocalDate end, long number, Person owner){
+    public Contract(long id, LocalDate start, LocalDate end, long number, Person owner){
         this.id = id;
         this.startContract = start;
         this.endContract = end;

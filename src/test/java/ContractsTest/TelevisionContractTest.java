@@ -1,3 +1,7 @@
+package ContractsTest;
+
+import Contracts.TelevisionContract;
+import Person.Person;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -9,7 +13,7 @@ import static org.junit.Assert.*;
 public class TelevisionContractTest {
 
     /*
-    Test all methods of the class TelevisionContract
+    Test all methods of the class Contracts.TelevisionContract
      */
     @Test
     public void setChannels() {

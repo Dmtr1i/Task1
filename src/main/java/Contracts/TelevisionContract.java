@@ -1,3 +1,6 @@
+package Contracts;
+import Person.Person;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,7 +12,7 @@ public class TelevisionContract extends Contract {
     /*
     Constructor
      */
-    TelevisionContract(long id, LocalDate start, LocalDate end, long number, Person owner, List<String> channels) {
+    public TelevisionContract(long id, LocalDate start, LocalDate end, long number, Person owner, List<String> channels) {
         super(id, start, end, number, owner);
         this.channels = channels;
     }
