@@ -2,27 +2,29 @@ package Repository;
 
 import Contracts.Contract;
 
-public class Repository {
+import java.util.function.Predicate;
+
+public class Repository <T extends Contract> {
     /*
     Private fields for storage data
      */
-    private Contract[] contracts;
+    private T[] contracts;
     private int size;
     /*
     Constructor
      */
     public Repository(){
         size = 0;
-        contracts = (Contract[]) new Contract[10];
+        contracts = (T[]) new Contract[10];
     }
     /*
     this method adds new contract to repository
      */
-    public void add(Contract contract){
+    public void add(T contract){
         if (isEmpty()) contracts[0] = contract;
         else {
             if (size == contracts.length) {
-                Contract[] copy = (Contract[]) new Contract[contracts.length*2];
+                T[] copy = (T[]) new Contract[contracts.length*2];
                 System.arraycopy(contracts, 0, copy, 0, contracts.length);
                 copy[contracts.length] = contract;
                 contracts = copy;
@@ -46,7 +48,7 @@ public class Repository {
     /*
     this method returns contract by the ID
      */
-    public Contract get(int id) {
+    public T get(int id) {
         int index = -1;
         for (int i = 0; i < size; i++) {
             if (contracts[i].getId() == id) {
@@ -55,13 +57,13 @@ public class Repository {
             }
         }
         if (index == -1) return null;
-        else return contracts[index];
+        else return (T)contracts[index];
     }
     /*
     this method clear repository
      */
     public void clear(){
-        contracts = (Contract[]) new Contract[10];
+        contracts = (T[]) new Contract[10];
         size = 0;
     }
     /*
@@ -80,9 +82,30 @@ public class Repository {
             Contract[] copy = new Contract[size-1];
             System.arraycopy(contracts, 0, copy, 0, index);
             System.arraycopy(contracts, index + 1, copy, index, size - index - 1);
-            contracts = (Contract[])copy;
+            contracts = (T[])copy;
             size -= 1;
             return true;
         }
     }
+    /*
+    * search value in repository by criteries
+    */
+    public Repository<T> search(Predicate<T> predicate) {
+        Repository<T> result = new Repository<T>();
+        for (int i = 0; i < size; i++) {
+            if (predicate.test((T)contracts[i]))
+                result.add((T)contracts[i]);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Repository<?> that = (Repository<?>) o;
+        return size == that.size;
+    }
+
+
 }
