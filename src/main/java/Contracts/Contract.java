@@ -2,6 +2,7 @@ package Contracts;
 import Person.Person;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Contract{
 
@@ -88,4 +89,7 @@ public class Contract{
     public void setOwner(Person owner) {
         this.owner = owner;
     }
+
+    @Override
+    public int hashCode() { return Objects.hash(id, startContract, endContract, number, owner); }
 }

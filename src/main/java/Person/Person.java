@@ -2,6 +2,7 @@ package Person;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 public class Person {
     /*
@@ -117,4 +118,7 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public int hashCode() { return Objects.hash(id, name, birthDate, gender, passportNumber, passportSeries, age);}
 }

@@ -3,6 +3,7 @@ import Person.Person;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class TelevisionContract extends Contract {
     /*
@@ -28,4 +29,7 @@ public class TelevisionContract extends Contract {
     public List<String> getChannels() {
         return channels;
     }
+
+    @Override
+    public int hashCode() { return Objects.hash(super.hashCode(), channels);}
 }

@@ -2,6 +2,12 @@ package Repository;
 
 import Contracts.Contract;
 
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class Repository <T extends Contract> {
@@ -107,5 +113,9 @@ public class Repository <T extends Contract> {
         return size == that.size;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(size, contracts) + Arrays.hashCode(contracts);
+    }
 
 }

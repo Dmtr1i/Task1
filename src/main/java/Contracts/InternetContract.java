@@ -2,6 +2,7 @@ package Contracts;
 import Person.Person;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class InternetContract extends Contract {
     /*
@@ -27,4 +28,7 @@ public class InternetContract extends Contract {
     public void setConnectionSpeed(int connectionSpeed) {
         this.connectionSpeed = connectionSpeed;
     }
+
+    @Override
+    public int hashCode() { return Objects.hash(super.hashCode(), connectionSpeed); }
 }

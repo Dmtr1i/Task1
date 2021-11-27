@@ -2,6 +2,7 @@ package Contracts;
 import Person.Person;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class MobileContract extends Contract {
     /*
@@ -55,4 +56,7 @@ public class MobileContract extends Contract {
     public void setInternet(int internet) {
         this.internet = internet;
     }
+
+    @Override
+    public int hashCode() { return Objects.hash(super.hashCode(), minutes, messages, internet); }
 }
