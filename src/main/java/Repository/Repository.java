@@ -1,12 +1,7 @@
 package Repository;
 
 import Contracts.Contract;
-
-
 import java.util.Arrays;
-import java.util.Comparator;
-
-
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -103,6 +98,10 @@ public class Repository <T extends Contract> {
                 result.add((T)contracts[i]);
         }
         return result;
+    }
+
+    public void set(int id, T contract) {
+        contracts[id] = contract;
     }
 
     @Override
