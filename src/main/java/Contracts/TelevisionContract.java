@@ -13,7 +13,7 @@ public class TelevisionContract extends Contract {
     /*
     Constructor
      */
-    public TelevisionContract(long id, LocalDate start, LocalDate end, long number, Person owner, List<String> channels) {
+    public TelevisionContract(int id, LocalDate start, LocalDate end, int number, Person owner, List<String> channels) {
         super(id, start, end, number, owner);
         this.channels = channels;
     }

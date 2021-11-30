@@ -10,17 +10,17 @@ public class Contract{
     private fields for data storage
     */
 
-    private long id;
+    private int id;
     private LocalDate startContract;
     private LocalDate endContract;
-    private long number;
+    private int number;
     private Person owner;
 
     /*
     Constructor
     */
 
-    public Contract(long id, LocalDate start, LocalDate end, long number, Person owner){
+    public Contract(int id, LocalDate start, LocalDate end, int number, Person owner){
         this.id = id;
         this.startContract = start;
         this.endContract = end;
@@ -32,7 +32,7 @@ public class Contract{
     This method returns ID of contract
      */
 
-    public long getId() {
+    public int getId() {
         return id;
     }
     /*
@@ -50,7 +50,7 @@ public class Contract{
     /*
     This method returns number of contract
      */
-    public long getNumber() {
+    public int getNumber() {
         return number;
     }
     /*
@@ -62,7 +62,7 @@ public class Contract{
     /*
     This method set ID of contract
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     /*
@@ -80,7 +80,7 @@ public class Contract{
     /*
     This method set number of contract
      */
-    public void setNumber(long number) {
+    public void setNumber(int number) {
         this.number = number;
     }
     /*

@@ -10,9 +10,9 @@ public class BubbleSort <T extends Contract> implements ISorter<T>{
         while(check) {
             check = false;
             for (int i = 0; i < repo.getSize() - 1; i++) {
-                if (comp.compare(repo.get(i), (T)repo.get(i + 1)) > 0) {
-                    T temp = repo.get(i);
-                    repo.set(i, repo.get(i + 1));
+                if (comp.compare(repo.getByIndex(i), repo.getByIndex(i + 1)) < 0) {
+                    T temp = repo.getByIndex(i);
+                    repo.set(i, repo.getByIndex(i + 1));
                     repo.set(i + 1, temp);
                     check = true;
                 }

@@ -1,7 +1,9 @@
 package Repository;
 
 import Contracts.Contract;
+import Sorts.*;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -11,12 +13,25 @@ public class Repository <T extends Contract> {
      */
     private T[] contracts;
     private int size;
+    private ISorter<T> sorter = new BubbleSort<>();
     /*
     Constructor
      */
     public Repository(){
         size = 0;
         contracts = (T[]) new Contract[10];
+    }
+    /*
+    * This method returns sorter
+    * */
+    public ISorter<T> getSorter() {
+        return sorter;
+    }
+    /*
+    * This method sets sorter
+    * */
+    public void setSorter(ISorter<T> sorter) {
+        this.sorter = sorter;
     }
     /*
     this method adds new contract to repository
@@ -41,7 +56,7 @@ public class Repository <T extends Contract> {
     /*
     this method prints all contracts of the repository
      */
-    public void print(){ for(int i = 0; i < size; i++) System.out.println(contracts[i]); }
+    public void print(){ for(int i = 0; i < size; i++) System.out.println(contracts[i] + " " + contracts[i].getNumber()); }
     /*
     this method returns size of the repository
      */
@@ -49,7 +64,7 @@ public class Repository <T extends Contract> {
     /*
     this method returns contract by the ID
      */
-    public T get(int id) {
+    public T getById(int id) {
         int index = -1;
         for (int i = 0; i < size; i++) {
             if (contracts[i].getId() == id) {
@@ -60,6 +75,10 @@ public class Repository <T extends Contract> {
         if (index == -1) return null;
         else return (T)contracts[index];
     }
+    /*
+    * this method returns contract by the index
+    * */
+    public T getByIndex(int index) { return (T)contracts[index];}
     /*
     this method clear repository
      */
@@ -99,11 +118,18 @@ public class Repository <T extends Contract> {
         }
         return result;
     }
-
+    /*
+    * this method sets contract by index
+    * */
     public void set(int id, T contract) {
         contracts[id] = contract;
     }
-
+    /*
+    * this method sorts repository
+    * */
+    public void sort(Comparator<T> comp) {
+        sorter.sort(comp, this);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,7 +137,6 @@ public class Repository <T extends Contract> {
         Repository<?> that = (Repository<?>) o;
         return size == that.size;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(size, contracts) + Arrays.hashCode(contracts);

@@ -8,7 +8,7 @@ public class Person {
     /*
     privatee field for data storage
      */
-    private long id;
+    private int id;
     private String name;
     private LocalDate birthDate;
     private String gender;
@@ -18,7 +18,7 @@ public class Person {
     /*
     Constructor
      */
-    public Person(long id, String name, LocalDate birthDate, String gender, int passportNumber, int passportSeries) {
+    public Person(int id, String name, LocalDate birthDate, String gender, int passportNumber, int passportSeries) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -79,7 +79,7 @@ public class Person {
     /*
     This method set ID of person
     */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     /*

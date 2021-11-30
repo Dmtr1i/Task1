@@ -12,7 +12,7 @@ public class InternetContract extends Contract {
     /*
     Constructor
      */
-    public InternetContract(long id, LocalDate start, LocalDate end, long number, Person owner, int speed){
+    public InternetContract(int id, LocalDate start, LocalDate end, int number, Person owner, int speed){
         super(id, start, end, number, owner);
         this.connectionSpeed = speed;
     }

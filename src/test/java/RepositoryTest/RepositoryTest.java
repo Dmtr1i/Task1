@@ -61,7 +61,7 @@ public class RepositoryTest {
         InternetContract contract2 = new InternetContract(2, LocalDate.of(2021, 10, 6), LocalDate.of(2021, 11, 6), 456, person, 16);
         data.add(contract);
         data.add(contract2);
-        Contract actual = data.get(1);
+        Contract actual = data.getById(1);
         assertEquals(contract, actual);
     }
 

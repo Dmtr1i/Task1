@@ -14,7 +14,7 @@ public class MobileContract extends Contract {
     /*
     Constructor
      */
-    public MobileContract(long id, LocalDate start, LocalDate end, long number, Person owner, int minutes, int messages, int internet) {
+    public MobileContract(int id, LocalDate start, LocalDate end, int number, Person owner, int minutes, int messages, int internet) {
         super(id, start, end, number, owner);
         this.minutes = minutes;
         this.messages = messages;
