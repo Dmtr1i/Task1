@@ -20,8 +20,8 @@ public class ShakerSort <T extends Contract> implements ISorter<T>{
             for (int i = end; i > start; i--) {
                 if (comp.compare(repo.getByIndex(i - 1), repo.getByIndex(i)) < 0) {
                     T temp = repo.getByIndex(i);
-                    repo.set(i, repo.getByIndex(i + 1));
-                    repo.set(i + 1, temp);
+                    repo.set(i, repo.getByIndex(i - 1));
+                    repo.set(i - 1, temp);
                 }
             }
             start++;
