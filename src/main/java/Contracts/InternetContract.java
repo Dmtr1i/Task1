@@ -31,4 +31,9 @@ public class InternetContract extends Contract {
 
     @Override
     public int hashCode() { return Objects.hash(super.hashCode(), connectionSpeed); }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %d", super.toString(), connectionSpeed);
+    }
 }

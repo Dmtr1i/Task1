@@ -32,4 +32,9 @@ public class TelevisionContract extends Contract {
 
     @Override
     public int hashCode() { return Objects.hash(super.hashCode(), channels);}
+
+    @Override
+    public String toString() {
+        return String.format("%s, %s", super.toString(), channels);
+    }
 }

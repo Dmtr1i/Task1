@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Person {
     /*
-    privatee field for data storage
+    private field for data storage
      */
     private int id;
     private String name;
@@ -121,4 +121,10 @@ public class Person {
 
     @Override
     public int hashCode() { return Objects.hash(id, name, birthDate, gender, passportNumber, passportSeries, age);}
+
+    @Override
+    public String toString() {
+        return String.format("%d, %s, %d.%d.%d, %s, %d, %d, %d", id, name, birthDate.getDayOfMonth(), birthDate.getMonthValue(),
+                birthDate.getYear(), gender, passportSeries, passportNumber, age);
+    }
 }

@@ -59,4 +59,9 @@ public class MobileContract extends Contract {
 
     @Override
     public int hashCode() { return Objects.hash(super.hashCode(), minutes, messages, internet); }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %d, %d, %d", super.toString(), minutes, messages, internet);
+    }
 }

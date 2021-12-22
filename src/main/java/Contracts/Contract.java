@@ -92,4 +92,12 @@ public class Contract{
 
     @Override
     public int hashCode() { return Objects.hash(id, startContract, endContract, number, owner); }
+
+    @Override
+    public String toString() {
+        return String.format("%d, %d.%d.%d, %d.%d.%d, %d, %d, %s, %d.%d.%d, %s, %d, %d, %d", id, startContract.getDayOfMonth(), startContract.getMonthValue(),
+                startContract.getYear(), endContract.getDayOfMonth(), endContract.getMonthValue(),
+                endContract.getYear(), number, owner.getId(), owner.getName(), owner.getBirthDate().getDayOfMonth(), owner.getBirthDate().getMonthValue(),owner.getBirthDate().getYear(),
+                owner.getGender(), owner.getPassportSeries(), owner.getPassportNumber(), owner.getAge());
+    }
 }
