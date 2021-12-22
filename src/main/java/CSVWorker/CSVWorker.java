@@ -39,25 +39,21 @@ public class CSVWorker <T extends Contract> {
             System.out.println("No file selected");
             return;
         }
-        /*try {
+        try {
             CSVWriter writer = new CSVWriter(file);
-
-        }*/
+            T temp;
+            String[] data;
+            for (int i = 0; i < repo.getSize(); i++) {
+                temp = repo.getByIndex(i);
+                data = temp.toString().split(",");
+                String[] data2 = new String[data.length + 1];
+                data2[0] = temp.getClass().getSimpleName();
+                for (int j = 0; j < data.length; j++) data2[j + 1] = data[j];
+                writer.writeNext(data2);
+            }
+            writer.close();
+        } catch(IOException ex) {
+            System.out.println("Error: " + ex);
+        }
     }
 }
-
-
-/*
-        try {
-            CSVReader reader = new CSVReader(read);
-            String[] text;
-            while ((text = reader.readNext()) != null) {
-                for (int i = 0; i < text.length; i++) System.out.print(text[i]);
-                System.out.println();
-            }
-        } catch (CsvValidationException ex) {
-            System.out.println("Something wrong: " + ex);
-        } catch (IOException ex) {
-            System.out.println("Something wrong: " + ex);
-        }
-         */
