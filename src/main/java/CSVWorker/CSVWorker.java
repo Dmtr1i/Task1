@@ -14,8 +14,13 @@ import java.util.List;
 
 public class CSVWorker <T extends Contract> {
 
+    /*
+    Class for work with CSV files
+     */
     public CSVWorker() {}
-
+    /*
+    That method reads CSV files
+     */
     public Repository readFile(FileReader file, Repository repo) {
         if (file == null) {
             System.out.println("No file selected");
@@ -24,6 +29,9 @@ public class CSVWorker <T extends Contract> {
         try {
             CSVReader reader = new CSVReader(file);
             String[] data;
+            /*
+            choose the type of contract, read It and add to the repository
+             */
             while ((data = reader.readNext()) != null) {
                 if (data[0].contains("InternetContract")) {
                     int ownerId = Integer.parseInt(data[5].replaceAll("\\s", ""));
@@ -128,7 +136,9 @@ public class CSVWorker <T extends Contract> {
         }
         return repo;
     }
-
+    /*
+    That method writes CSV file
+     */
     public void writeFile (FileWriter file, Repository<T> repo) {
         if (file == null) {
             System.out.println("No file selected");
