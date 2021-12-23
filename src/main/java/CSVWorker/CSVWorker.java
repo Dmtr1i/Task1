@@ -14,21 +14,17 @@ import java.util.List;
 
 public class CSVWorker <T extends Contract> {
 
-    public CSVWorker() {
-    }
+    public CSVWorker() {}
 
-    public void readFile(FileReader file) {
+    public Repository readFile(FileReader file, Repository repo) {
         if (file == null) {
             System.out.println("No file selected");
-            return;
+            return null;
         }
         try {
             CSVReader reader = new CSVReader(file);
             String[] data;
-            Repository repo = new Repository();
             while ((data = reader.readNext()) != null) {
-                for (int i = 0; i < data.length; i++) System.out.print(data[i]);
-                System.out.println();
                 if (data[0].contains("InternetContract")) {
                     int ownerId = Integer.parseInt(data[5].replaceAll("\\s", ""));
                     String ownerName = data[6].replaceAll("^\\s", "");
@@ -130,6 +126,7 @@ public class CSVWorker <T extends Contract> {
         } catch (CsvValidationException ex) {
             System.out.println("Error: " + ex);
         }
+        return repo;
     }
 
     public void writeFile (FileWriter file, Repository<T> repo) {
