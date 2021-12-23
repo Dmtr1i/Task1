@@ -35,6 +35,8 @@ public class TelevisionContract extends Contract {
 
     @Override
     public String toString() {
-        return String.format("%s, %s", super.toString(), channels);
+        String stringChannels = channels.toString();
+        stringChannels = stringChannels.replaceAll(",", ".");
+        return String.format("%s, %s", super.toString(), stringChannels);
     }
 }

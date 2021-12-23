@@ -114,7 +114,7 @@ public class RepositoryTest {
         data.add(contract4);
         data.add(contract5);
         data.add(contract6);
-        /*
+/*
         try {
             FileWriter file = new FileWriter("D:\\test.txt");
             CSVWorker me = new CSVWorker();
@@ -122,7 +122,7 @@ public class RepositoryTest {
         } catch (IOException ex) {
             System.out.println("Error: " + ex);
         }
-        */
+*/
         assertEquals(data, data.search(contracts -> contracts.getId() < 10));
     }
 }

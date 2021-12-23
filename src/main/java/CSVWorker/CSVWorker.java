@@ -9,7 +9,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.function.Predicate;
+import java.util.Arrays;
+import java.util.List;
 
 public class CSVWorker <T extends Contract> {
 
@@ -24,11 +25,11 @@ public class CSVWorker <T extends Contract> {
         try {
             CSVReader reader = new CSVReader(file);
             String[] data;
+            Repository repo = new Repository();
             while ((data = reader.readNext()) != null) {
                 for (int i = 0; i < data.length; i++) System.out.print(data[i]);
                 System.out.println();
                 if (data[0].contains("InternetContract")) {
-                    //Person owner;
                     int ownerId = Integer.parseInt(data[5].replaceAll("\\s", ""));
                     String ownerName = data[6].replaceAll("^\\s", "");
                     String dateTemp = data[7].replaceAll("\\s", "");
@@ -39,9 +40,90 @@ public class CSVWorker <T extends Contract> {
                     String ownerGender = data[8].replaceAll("\\s", "");
                     int ownerPasSeries = Integer.parseInt(data[9].replaceAll("\\s", ""));
                     int ownerPasNumber = Integer.parseInt(data[10].replaceAll("\\s", ""));
-                    Person me = new Person(ownerId, ownerName, LocalDate.of(ownerBirthDateYear, ownerBirthDateMonth, ownerBirthDateDay), ownerGender, ownerPasNumber, ownerPasSeries);
-                    System.out.println(me.toString());
+                    Person owner = new Person(ownerId, ownerName, LocalDate.of(ownerBirthDateYear, ownerBirthDateMonth, ownerBirthDateDay), ownerGender, ownerPasNumber, ownerPasSeries);
+                    int contractId = Integer.parseInt(data[1].replaceAll("\\s", ""));
+                    dateTemp = data[2].replaceAll("\\s", "");
+                    dateTemp2 = dateTemp.split("\\.");
+                    int contractStartDate = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int contractStartMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int contractStartYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    dateTemp = data[3].replaceAll("\\s", "");
+                    dateTemp2 = dateTemp.split("\\.");
+                    int contractEndDate = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int contractEndMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int contractEndYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    int contractNumber = Integer.parseInt(data[4].replaceAll("\\s", ""));
+                    int contractConnectionSpeed = Integer.parseInt(data[12].replaceAll("\\s", ""));
+                    InternetContract internet = new InternetContract(contractId, LocalDate.of(contractStartYear, contractStartMonth, contractStartDate),
+                            LocalDate.of(contractEndYear, contractEndMonth, contractEndDate), contractNumber, owner, contractConnectionSpeed);
+                    repo.add(internet);
                 }
+                else if (data[0].contains("MobileContract")) {
+                    int ownerId = Integer.parseInt(data[5].replaceAll("\\s", ""));
+                    String ownerName = data[6].replaceAll("^\\s", "");
+                    String dateTemp = data[7].replaceAll("\\s", "");
+                    String[] dateTemp2 = dateTemp.split("\\.");
+                    int ownerBirthDateDay = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int ownerBirthDateMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int ownerBirthDateYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    String ownerGender = data[8].replaceAll("\\s", "");
+                    int ownerPasSeries = Integer.parseInt(data[9].replaceAll("\\s", ""));
+                    int ownerPasNumber = Integer.parseInt(data[10].replaceAll("\\s", ""));
+                    Person owner = new Person(ownerId, ownerName, LocalDate.of(ownerBirthDateYear, ownerBirthDateMonth, ownerBirthDateDay), ownerGender, ownerPasNumber, ownerPasSeries);
+                    int contractId = Integer.parseInt(data[1].replaceAll("\\s", ""));
+                    dateTemp = data[2].replaceAll("\\s", "");
+                    dateTemp2 = dateTemp.split("\\.");
+                    int contractStartDate = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int contractStartMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int contractStartYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    dateTemp = data[3].replaceAll("\\s", "");
+                    dateTemp2 = dateTemp.split("\\.");
+                    int contractEndDate = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int contractEndMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int contractEndYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    int contractNumber = Integer.parseInt(data[4].replaceAll("\\s", ""));
+                    int contractMinutes = Integer.parseInt(data[12].replaceAll("\\s", ""));
+                    int contractMessages = Integer.parseInt(data[13].replaceAll("\\s", ""));
+                    int contractInternet = Integer.parseInt(data[14].replaceAll("\\s", ""));
+                    MobileContract mobile = new MobileContract(contractId, LocalDate.of(contractStartYear, contractStartMonth, contractStartDate),
+                            LocalDate.of(contractEndYear, contractEndMonth, contractEndDate), contractNumber, owner, contractMinutes, contractMessages, contractInternet);
+                    repo.add(mobile);
+                }
+                else if (data[0].contains("TelevisionContract")) {
+                    int ownerId = Integer.parseInt(data[5].replaceAll("\\s", ""));
+                    String ownerName = data[6].replaceAll("^\\s", "");
+                    String dateTemp = data[7].replaceAll("\\s", "");
+                    String[] dateTemp2 = dateTemp.split("\\.");
+                    int ownerBirthDateDay = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int ownerBirthDateMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int ownerBirthDateYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    String ownerGender = data[8].replaceAll("\\s", "");
+                    int ownerPasSeries = Integer.parseInt(data[9].replaceAll("\\s", ""));
+                    int ownerPasNumber = Integer.parseInt(data[10].replaceAll("\\s", ""));
+                    Person owner = new Person(ownerId, ownerName, LocalDate.of(ownerBirthDateYear, ownerBirthDateMonth, ownerBirthDateDay), ownerGender, ownerPasNumber, ownerPasSeries);
+                    int contractId = Integer.parseInt(data[1].replaceAll("\\s", ""));
+                    dateTemp = data[2].replaceAll("\\s", "");
+                    dateTemp2 = dateTemp.split("\\.");
+                    int contractStartDate = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int contractStartMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int contractStartYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    dateTemp = data[3].replaceAll("\\s", "");
+                    dateTemp2 = dateTemp.split("\\.");
+                    int contractEndDate = Integer.parseInt(dateTemp2[0].replaceAll("\\s", ""));
+                    int contractEndMonth = Integer.parseInt(dateTemp2[1].replaceAll("\\s", ""));
+                    int contractEndYear = Integer.parseInt(dateTemp2[2].replaceAll("\\s", ""));
+                    int contractNumber = Integer.parseInt(data[4].replaceAll("\\s", ""));
+                    String contractChannels = data[12];
+                    contractChannels = contractChannels.replaceAll(" ", "");
+                    contractChannels = contractChannels.replaceAll("\\[", "");
+                    contractChannels = contractChannels.replaceAll("\\]", "");
+                    String[] contractChannelsAr = contractChannels.split("\\.");
+                    List<String> contractChannelsList = Arrays.stream(contractChannelsAr).toList();
+                    TelevisionContract tv = new TelevisionContract(contractId, LocalDate.of(contractStartYear, contractStartMonth, contractStartDate),
+                            LocalDate.of(contractEndYear, contractEndMonth, contractEndDate), contractNumber, owner, contractChannelsList);
+                    repo.add(tv);
+                }
+
             }
         } catch (IOException ex) {
             System.out.println("Error: " + ex);

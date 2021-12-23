@@ -56,7 +56,7 @@ public class Repository <T extends Contract> {
     /*
     this method prints all contracts of the repository
      */
-    public void print(){ for(int i = 0; i < size; i++) System.out.println(contracts[i] + " " + contracts[i].getNumber()); }
+    public void print(){ for(int i = 0; i < size; i++) System.out.println(contracts[i]); }
     /*
     this method returns size of the repository
      */
