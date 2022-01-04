@@ -2,6 +2,7 @@ package CSVWorker;
 import Contracts.*;
 import Person.*;
 import Repository.*;
+import Validation.ContractValidator;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
@@ -60,6 +61,9 @@ public class CSVWorker <T extends Contract> {
                     int contractConnectionSpeed = Integer.parseInt(data[12].replaceAll("\\s", ""));
                     InternetContract internet = new InternetContract(contractId, LocalDate.of(contractStartYear, contractStartMonth, contractStartDate),
                             LocalDate.of(contractEndYear, contractEndMonth, contractEndDate), contractNumber, owner, contractConnectionSpeed);
+                    ContractValidator vali = new ContractValidator();
+                    vali.validate(internet);
+                    System.out.println(vali.toString());
                     repo.add(internet);
                 }
                 else if (data[0].contains("MobileContract")) {
@@ -91,6 +95,9 @@ public class CSVWorker <T extends Contract> {
                     int contractInternet = Integer.parseInt(data[14].replaceAll("\\s", ""));
                     MobileContract mobile = new MobileContract(contractId, LocalDate.of(contractStartYear, contractStartMonth, contractStartDate),
                             LocalDate.of(contractEndYear, contractEndMonth, contractEndDate), contractNumber, owner, contractMinutes, contractMessages, contractInternet);
+                    ContractValidator vali = new ContractValidator();
+                    vali.validate(mobile);
+                    System.out.println(vali.toString());
                     repo.add(mobile);
                 }
                 else if (data[0].contains("TelevisionContract")) {
@@ -125,6 +132,9 @@ public class CSVWorker <T extends Contract> {
                     List<String> contractChannelsList = Arrays.stream(contractChannelsAr).toList();
                     TelevisionContract tv = new TelevisionContract(contractId, LocalDate.of(contractStartYear, contractStartMonth, contractStartDate),
                             LocalDate.of(contractEndYear, contractEndMonth, contractEndDate), contractNumber, owner, contractChannelsList);
+                    ContractValidator vali = new ContractValidator();
+                    vali.validate(tv);
+                    System.out.println(vali.toString());
                     repo.add(tv);
                 }
 

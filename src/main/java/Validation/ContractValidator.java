@@ -6,17 +6,32 @@ import Person.*;
 import java.util.Arrays;
 
 public class ContractValidator {
+    /*
+    Fields for collect data of current contract
+     */
     String status;
     String description;
     String fields;
 
+    /*
+    returns status of current contract
+     */
+
     public String getStatus() {return status;}
+
+    /*
+    default constructor
+     */
 
     public ContractValidator () {
         status = null;
         description = null;
         fields = null;
     }
+
+    /*
+    validate Contract
+     */
 
     public void validate (Contract contract) {
         status = "OK";
@@ -28,6 +43,10 @@ public class ContractValidator {
             fields = fields + "startContract, endContract,";
         }
     }
+
+    /*
+    validate InternetContract
+     */
 
     public void validate (InternetContract contract) {
         status = "OK";
@@ -44,6 +63,10 @@ public class ContractValidator {
             fields = fields + "connectionSpeed, ";
         }
     }
+
+    /*
+    validate MobileContract
+     */
 
     public void validate (MobileContract contract) {
         status = "OK";
@@ -70,6 +93,10 @@ public class ContractValidator {
             fields = fields + "internet, ";
         }
     }
+
+    /*
+    validate TelevisionContract
+     */
 
     public void validate(TelevisionContract contract) {
         status = "OK";
