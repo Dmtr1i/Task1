@@ -10,6 +10,8 @@ public class ContractValidator {
     String description;
     String fields;
 
+    public String getStatus() {return status;}
+
     public ContractValidator () {
         status = null;
         description = null;
