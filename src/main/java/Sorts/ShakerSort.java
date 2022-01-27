@@ -1,9 +1,11 @@
 package Sorts;
 
+import Annotations.WithoutConstructor;
 import Repository.Repository;
 import Contracts.Contract;
 import java.util.Comparator;
 
+@WithoutConstructor
 public class ShakerSort <T extends Contract> implements ISorter<T>{
     @Override
     public void sort(Comparator<T> comp, Repository<T> repo) {

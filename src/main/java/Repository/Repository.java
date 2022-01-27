@@ -1,5 +1,7 @@
 package Repository;
 
+import Annotations.AutoInjectable;
+import Annotations.WithoutConstructor;
 import Contracts.Contract;
 import Sorts.*;
 import java.util.Arrays;
@@ -7,12 +9,14 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Predicate;
 
+@WithoutConstructor
 public class Repository <T extends Contract> {
     /*
     Private fields for storage data
      */
     private T[] contracts;
     private int size;
+    @AutoInjectable(defaultField = "BubbleSort")
     private ISorter<T> sorter = new BubbleSort<>();
     /*
     Constructor

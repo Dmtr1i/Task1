@@ -1,10 +1,12 @@
 package Validation;
 
+import Annotations.WithoutConstructor;
 import Contracts.*;
 import Person.*;
 
 import java.util.Arrays;
 
+@WithoutConstructor
 public class ContractValidator {
     /*
     Fields for collect data of current contract

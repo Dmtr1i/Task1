@@ -1,4 +1,5 @@
 package CSVWorker;
+import Annotations.WithoutConstructor;
 import Contracts.*;
 import Person.*;
 import Repository.*;
@@ -13,12 +14,11 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-public class CSVWorker <T extends Contract> {
-
     /*
     Class for work with CSV files
      */
-    public CSVWorker() {}
+@WithoutConstructor
+public class CSVWorker <T extends Contract> {
     /*
     That method reads CSV files
      */
