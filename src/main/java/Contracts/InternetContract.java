@@ -16,6 +16,11 @@ public class InternetContract extends Contract {
         super(id, start, end, number, owner);
         this.connectionSpeed = speed;
     }
+
+    public InternetContract(){
+        super(0, null, null, 0, null);
+        this.connectionSpeed = 0;
+    }
     /*
     This method reurns connection speed of contract
      */
@@ -34,6 +39,8 @@ public class InternetContract extends Contract {
 
     @Override
     public String toString() {
-        return String.format("%s, %d", super.toString(), connectionSpeed);
+        return "InternetContract{" +
+                "connectionSpeed=" + connectionSpeed +
+                "} " + super.toString();
     }
 }

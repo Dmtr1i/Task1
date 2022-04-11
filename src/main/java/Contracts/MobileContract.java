@@ -11,14 +11,31 @@ public class MobileContract extends Contract {
     private int minutes;
     private int messages;
     private int internet;
+
+    @Override
+    public String toString() {
+        return "MobileContract{" +
+                "minutes=" + minutes +
+                ", messages=" + messages +
+                ", internet=" + internet +
+                "} " + super.toString();
+    }
+
     /*
-    Constructor
-     */
+        Constructor
+         */
     public MobileContract(int id, LocalDate start, LocalDate end, int number, Person owner, int minutes, int messages, int internet) {
         super(id, start, end, number, owner);
         this.minutes = minutes;
         this.messages = messages;
         this.internet = internet;
+    }
+
+    public MobileContract(){
+        super(0, null, null, 0, null);
+        this.minutes = 0;
+        this.messages = 0;
+        this.internet = 0;
     }
     /*
     This method returns minutes of contract
@@ -60,8 +77,4 @@ public class MobileContract extends Contract {
     @Override
     public int hashCode() { return Objects.hash(super.hashCode(), minutes, messages, internet); }
 
-    @Override
-    public String toString() {
-        return String.format("%s, %d, %d, %d", super.toString(), minutes, messages, internet);
-    }
 }

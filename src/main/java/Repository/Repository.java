@@ -146,4 +146,11 @@ public class Repository <T extends Contract> {
         return Objects.hash(size, contracts) + Arrays.hashCode(contracts);
     }
 
+    @Override
+    public String toString() {
+        String temp = "Repository{\n";
+        for (int i = 0; i < size; i++) temp += getByIndex(i).toString() + "\n";
+        temp+="}";
+        return temp;
+    }
 }

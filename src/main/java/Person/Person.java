@@ -15,9 +15,23 @@ public class Person {
     private int passportSeries;
     private int passportNumber;
     private int age;
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", gender='" + gender + '\'' +
+                ", passportSeries=" + passportSeries +
+                ", passportNumber=" + passportNumber +
+                ", age=" + age +
+                '}';
+    }
+
     /*
-    Constructor
-     */
+        Constructor
+         */
     public Person(int id, String name, LocalDate birthDate, String gender, int passportNumber, int passportSeries) {
         this.id = id;
         this.name = name;
@@ -34,6 +48,16 @@ public class Person {
         result = result.minus(birthDate.getYear(), ChronoUnit.YEARS);
         age = result.getYear();
     }
+
+    public Person() {
+        this.id = 0;
+        this.name = null;
+        this.birthDate = null;
+        this.gender = null;
+        this.passportNumber = 0;
+        this.passportSeries = 0;
+        this.age = 0;
+    };
     /*
     This method returns ID of person
      */
@@ -122,9 +146,4 @@ public class Person {
     @Override
     public int hashCode() { return Objects.hash(id, name, birthDate, gender, passportNumber, passportSeries, age);}
 
-    @Override
-    public String toString() {
-        return String.format("%d, %s, %d.%d.%d, %s, %d, %d, %d", id, name, birthDate.getDayOfMonth(), birthDate.getMonthValue(),
-                birthDate.getYear(), gender, passportSeries, passportNumber, age);
-    }
 }
