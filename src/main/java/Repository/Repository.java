@@ -3,20 +3,31 @@ package Repository;
 import Annotations.AutoInjectable;
 import Annotations.WithoutConstructor;
 import Contracts.Contract;
+import Contracts.InternetContract;
+import Contracts.MobileContract;
+import Contracts.TelevisionContract;
 import Sorts.*;
+
+import javax.xml.bind.annotation.*;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-@WithoutConstructor
+@XmlRootElement(name = "repository")
+@XmlType(propOrder = {"contracts", "size"})
+@XmlSeeAlso({InternetContract.class, MobileContract.class, TelevisionContract.class})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Repository <T extends Contract> {
     /*
     Private fields for storage data
      */
+    @XmlElement(name = "contract")
     private T[] contracts;
+    @XmlElement
     private int size;
     @AutoInjectable(defaultField = "BubbleSort")
+    @XmlTransient
     private ISorter<T> sorter = new BubbleSort<>();
     /*
     Constructor
@@ -128,6 +139,10 @@ public class Repository <T extends Contract> {
     public void set(int id, T contract) {
         contracts[id] = contract;
     }
+
+    public void setContracts(Contract[] contracts) {
+        this.contracts = (T[])contracts;
+    }
     /*
     * this method sorts repository
     * */
@@ -139,7 +154,7 @@ public class Repository <T extends Contract> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Repository<?> that = (Repository<?>) o;
-        return size == that.size;
+        return size == that.size && Arrays.equals(contracts, that.contracts) && Objects.equals(sorter, that.sorter);
     }
     @Override
     public int hashCode() {

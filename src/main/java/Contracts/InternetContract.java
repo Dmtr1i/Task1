@@ -1,13 +1,18 @@
 package Contracts;
 import Person.Person;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@XmlRootElement(name = "InternetContract")
+@XmlType(propOrder = {"connectionSpeed"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class InternetContract extends Contract {
     /*
     private fields for data storage
      */
+    @XmlElement
     private int connectionSpeed;
     /*
     Constructor
@@ -18,8 +23,6 @@ public class InternetContract extends Contract {
     }
 
     public InternetContract(){
-        super(0, null, null, 0, null);
-        this.connectionSpeed = 0;
     }
     /*
     This method reurns connection speed of contract
@@ -42,5 +45,14 @@ public class InternetContract extends Contract {
         return "InternetContract{" +
                 "connectionSpeed=" + connectionSpeed +
                 "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        InternetContract that = (InternetContract) o;
+        return connectionSpeed == that.connectionSpeed;
     }
 }

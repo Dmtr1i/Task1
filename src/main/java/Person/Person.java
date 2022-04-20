@@ -50,13 +50,6 @@ public class Person {
     }
 
     public Person() {
-        this.id = 0;
-        this.name = null;
-        this.birthDate = null;
-        this.gender = null;
-        this.passportNumber = 0;
-        this.passportSeries = 0;
-        this.age = 0;
     };
     /*
     This method returns ID of person

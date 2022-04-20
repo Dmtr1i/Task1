@@ -1,16 +1,21 @@
 package Contracts;
 import Person.Person;
 
+import javax.xml.bind.annotation.*;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@XmlRootElement(name = "TelevisionContract")
+@XmlType(propOrder = {"channels"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TelevisionContract extends Contract {
     /*
     private field for data storage
      */
+    @XmlElement
     private List<String> channels;
 
     @Override
@@ -29,9 +34,6 @@ public class TelevisionContract extends Contract {
     }
 
     public TelevisionContract() {
-        super(0, null, null, 0, null);
-        String[] temp = {"one"};
-        this.channels = Arrays.stream(temp).toList();
     }
     /*
     This method set channel list of contract
@@ -49,4 +51,12 @@ public class TelevisionContract extends Contract {
     @Override
     public int hashCode() { return Objects.hash(super.hashCode(), channels);}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TelevisionContract tv = (TelevisionContract) o;
+        return Objects.equals(channels, tv.channels);
+    }
 }

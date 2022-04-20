@@ -1,15 +1,22 @@
 package Contracts;
 import Person.Person;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@XmlRootElement(name = "MobileContract")
+@XmlType(propOrder = {"minutes", "messages", "internet"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class MobileContract extends Contract {
     /*
     private fields for data storage
      */
+    @XmlElement
     private int minutes;
+    @XmlElement
     private int messages;
+    @XmlElement
     private int internet;
 
     @Override
@@ -32,10 +39,6 @@ public class MobileContract extends Contract {
     }
 
     public MobileContract(){
-        super(0, null, null, 0, null);
-        this.minutes = 0;
-        this.messages = 0;
-        this.internet = 0;
     }
     /*
     This method returns minutes of contract
@@ -77,4 +80,12 @@ public class MobileContract extends Contract {
     @Override
     public int hashCode() { return Objects.hash(super.hashCode(), minutes, messages, internet); }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        MobileContract that = (MobileContract) o;
+        return minutes == that.minutes && messages == that.messages && internet == that.internet;
+    }
 }

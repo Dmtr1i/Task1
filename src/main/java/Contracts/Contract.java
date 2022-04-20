@@ -1,19 +1,28 @@
 package Contracts;
 import Person.Person;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@XmlRootElement(name = "contract")
+@XmlSeeAlso({InternetContract.class, MobileContract.class, TelevisionContract.class})
+@XmlType(propOrder = {"id","startContract", "endContract", "number", "owner"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Contract{
 
     /*
     private fields for data storage
     */
-
+    @XmlElement
     private int id;
+    @XmlElement
     private LocalDate startContract;
+    @XmlElement
     private LocalDate endContract;
+    @XmlElement
     private int number;
+    @XmlElement
     private Person owner;
 
     /*
@@ -38,6 +47,8 @@ public class Contract{
         this.number = number;
         this.owner = owner;
     }
+
+    public Contract(){}
 
     /*
     This method returns ID of contract
@@ -104,4 +115,11 @@ public class Contract{
     @Override
     public int hashCode() { return Objects.hash(id, startContract, endContract, number, owner); }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contract contract = (Contract) o;
+        return id == contract.id && number == contract.number && Objects.equals(startContract, contract.startContract) && Objects.equals(endContract, contract.endContract) && Objects.equals(owner, contract.owner);
+    }
 }
